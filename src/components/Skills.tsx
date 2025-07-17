@@ -1,35 +1,49 @@
+import python from '../assets/skills/python.svg';
+import sql from '../assets/skills/sql.svg';
+import javascript from '../assets/skills/javascript.svg';
+import django from '../assets/skills/django.svg';
+import drf from '../assets/skills/drf.svg';
+import fastapi from '../assets/skills/fastapi.svg';
+import mysql from '../assets/skills/mysql.svg';
+import postgresql from '../assets/skills/postgresql.svg';
+import celery from '../assets/skills/celery.svg';
+import git from '../assets/skills/git.svg';
+import bitbucket from '../assets/skills/bitbucket.svg';
+import jira from '../assets/skills/jira.svg';
+import react from '../assets/skills/react.svg';
+
 const skills = [
   {
     category: 'Languages',
     items: [
-      { name: 'Python', img: '/src/assets/skills/python.svg' },
-      { name: 'SQL', img: '/src/assets/skills/sql.svg' },
-      { name: 'JavaScript', img: '/src/assets/skills/javascript.svg' },
+      { name: 'Python', img: python },
+      { name: 'SQL', img: sql },
+      { name: 'JavaScript', img: javascript },
     ],
   },
   {
     category: 'Frameworks',
     items: [
-      { name: 'Django', img: '/src/assets/skills/django.svg' },
-      { name: 'DRF', img: '/src/assets/skills/drf.svg' },
-      { name: 'FastAPI', img: '/src/assets/skills/fastapi.svg' },
+      { name: 'Django', img: django },
+      { name: 'DRF', img: drf },
+      { name: 'FastAPI', img: fastapi },
     ],
   },
   {
     category: 'Databases',
     items: [
-      { name: 'MySQL', img: '/src/assets/skills/mysql.svg' },
-      { name: 'PostgreSQL', img: '/src/assets/skills/postgresql.svg' },
+      { name: 'MySQL', img: mysql },
+      { name: 'PostgreSQL', img: postgresql },
     ],
   },
   {
     category: 'Tools',
     items: [
-      { name: 'Celery', img: '/src/assets/skills/celery.svg' },
-      { name: 'Git', img: '/src/assets/skills/git.svg' },
-      { name: 'Bitbucket', img: '/src/assets/skills/bitbucket.svg' },
-      { name: 'Jira', img: '/src/assets/skills/jira.svg' },
-      { name: 'React', img: '/src/assets/skills/react.svg' },
+      { name: 'Celery', img: celery },
+      { name: 'Git', img: git },
+      { name: 'Bitbucket', img: bitbucket },
+      { name: 'Jira', img: jira },
+      { name: 'React', img: react },
     ],
   },
 ];

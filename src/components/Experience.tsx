@@ -2,7 +2,7 @@ const experiences = [
   {
     company: 'Zentratech',
     role: 'Junior Software Developer (Remote)',
-    duration: 'Feb 2023 – Present',
+    duration: 'Feb 2023 – Sept 2024',
     points: [
         "Designed and developed scalable backend modules using Python, Django, and Django REST Framework for SaaS products serving 500+ active users.",
         "Implemented RESTful APIs and optimized database queries (MySQL), improving response times by 30%.",
