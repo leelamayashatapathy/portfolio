@@ -1,5 +1,3 @@
-import React from 'react';
-
 const certifications = [
   { name: 'AWS Certified Solutions Architect – Associate', org: 'Amazon Web Services' },
   { name: 'Python for Everybody', org: 'Coursera' },

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import avatar from '../assets/react.svg'; // Placeholder avatar
+import { useEffect, useState } from 'react';
 
 const TITLES = ['Backend Developer', 'Software Engineer'];
 
@@ -14,7 +13,7 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     const fullText = TITLES[index];
 
     if (!isDeleting && displayed.length < fullText.length) {
@@ -48,8 +47,8 @@ const Hero = () => {
         Experienced backend developer specializing in Python, Django, and REST APIs. Passionate about building scalable, reliable systems and delivering clean, maintainable code.
       </p>
       <div className="flex gap-4 justify-center">
-        <a href="/src/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-accent text-white rounded shadow hover:bg-accent-dark transition-all duration-200 font-semibold text-lg scale-100 hover:scale-105">View Resume</a>
-        <a href="/src/assets/resume.pdf" download className="px-6 py-2 bg-white border-2 border-accent text-accent rounded shadow hover:bg-accent hover:text-white transition-all duration-200 font-semibold text-lg scale-100 hover:scale-105">Download Resume</a>
+        <a href="/src/assets/leelamaya shatapathy_resume.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-accent text-white rounded shadow hover:bg-accent-dark transition-all duration-200 font-semibold text-lg scale-100 hover:scale-105">View Resume</a>
+        <a href="/src/assets/leelamaya shatapathy_resume.pdf" download className="px-6 py-2 bg-white border-2 border-accent text-accent rounded shadow hover:bg-accent hover:text-white transition-all duration-200 font-semibold text-lg scale-100 hover:scale-105">Download Resume</a>
       </div>
     </section>
   );

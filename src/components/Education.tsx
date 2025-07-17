@@ -1,5 +1,3 @@
-import React from 'react';
-
 const education = [
   {
     degree: 'Master of Computer Applications (MCA)',

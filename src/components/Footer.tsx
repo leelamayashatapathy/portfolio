@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Footer = () => (
   <footer className="bg-accent/5 border-t py-6 text-center text-accent-dark text-sm mt-8 flex flex-col items-center gap-2">
     <div className="font-heading font-semibold">&copy; {new Date().getFullYear()} Leelamaya Shatapathy. All rights reserved.</div>
