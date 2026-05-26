@@ -35,7 +35,8 @@
 
 @layer components {
   .page-shell {
-    @apply relative overflow-x-hidden;
+    @apply relative;
+    overflow-x: clip;
   }
 
   .section-shell {
