@@ -5,14 +5,19 @@ export default {
     extend: {
       colors: {
         accent: {
-          DEFAULT: '#14b8a6', // teal-500
-          light: '#5eead4', // teal-300
-          dark: '#0f766e', // teal-700
+          DEFAULT: '#c96a2f',
+          soft: '#e4b07b',
+          deep: '#8a4117',
         },
+        canvas: '#f3ede3',
+        panel: '#fffaf2',
+        ink: '#1f2933',
+        muted: '#5f6772',
+        forest: '#274f46',
       },
       fontFamily: {
-        sans: ['Inter', 'Poppins', 'ui-sans-serif', 'system-ui'],
-        heading: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui'],
+        sans: ['Space Grotesk', 'ui-sans-serif', 'system-ui'],
+        heading: ['DM Serif Display', 'Georgia', 'serif'],
       },
     },
   },

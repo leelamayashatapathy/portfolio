@@ -1,9 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-sans bg-white min-h-screen;
-} 
+@layer base {
+  :root {
+    --canvas: 243 237 227;
+    --panel: 255 250 242;
+    --ink: 31 41 51;
+    --muted: 95 103 114;
+    --accent: 201 106 47;
+    --accent-deep: 138 65 23;
+    --forest: 39 79 70;
+    --line: 45 55 72 / 0.12;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-canvas font-sans text-ink antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(201, 106, 47, 0.16), transparent 28%),
+      radial-gradient(circle at 85% 15%, rgba(39, 79, 70, 0.14), transparent 26%),
+      linear-gradient(180deg, rgba(255, 250, 242, 0.92), rgba(243, 237, 227, 0.98));
+  }
+
+  ::selection {
+    background: rgba(201, 106, 47, 0.18);
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply relative overflow-x-hidden;
+  }
+
+  .section-shell {
+    @apply relative mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-24;
+  }
+
+  .section-heading {
+    @apply max-w-2xl;
+  }
+
+  .section-kicker {
+    @apply mb-4 inline-flex items-center rounded-full border border-ink/10 bg-white/60 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted backdrop-blur;
+  }
+
+  .section-title {
+    @apply font-heading text-4xl leading-tight text-ink md:text-5xl;
+  }
+
+  .section-copy {
+    @apply mt-4 max-w-2xl text-base leading-7 text-muted md:text-lg;
+  }
+
+  .surface-card {
+    @apply rounded-[28px] border border-ink/10 bg-panel/90 shadow-[0_18px_60px_rgba(31,41,51,0.08)] backdrop-blur;
+  }
+
+  .soft-grid {
+    background-image:
+      linear-gradient(rgba(45, 55, 72, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 55, 72, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .reveal {
+    opacity: 0;
+    will-change: opacity, transform, filter;
+    transition:
+      opacity 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      filter 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  }
+
+  .reveal-up {
+    transform: translate3d(0, 36px, 0);
+  }
+
+  .reveal-left {
+    transform: translate3d(-44px, 0, 0);
+  }
+
+  .reveal-right {
+    transform: translate3d(44px, 0, 0);
+  }
+
+  .reveal-scale {
+    transform: scale(0.92);
+  }
+
+  .reveal-blur {
+    filter: blur(10px);
+    transform: translate3d(0, 24px, 0) scale(0.98);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .ambient-float {
+    animation: ambientFloat 9s ease-in-out infinite;
+  }
+
+  .ambient-drift {
+    animation: ambientDrift 14s ease-in-out infinite;
+  }
+
+  .ambient-glow {
+    animation: ambientGlow 7s ease-in-out infinite;
+  }
+
+  .section-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(201, 106, 47, 0.16), transparent 68%);
+    filter: blur(10px);
+    pointer-events: none;
+    animation: ambientFloat 12s ease-in-out infinite;
+  }
+}
+
+@keyframes ambientFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes ambientDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(14px, -10px, 0) rotate(4deg);
+  }
+}
+
+@keyframes ambientGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .ambient-float,
+  .ambient-drift,
+  .ambient-glow,
+  .section-spotlight::before {
+    animation: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

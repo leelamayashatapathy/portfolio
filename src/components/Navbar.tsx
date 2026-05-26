@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -10,48 +10,50 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [active, setActive] = React.useState(window.location.hash || '#home');
+  const [active, setActive] = useState(window.location.hash || '#home');
   const [menuOpen, setMenuOpen] = useState(false);
-  React.useEffect(() => {
+
+  useEffect(() => {
     const onHashChange = () => setActive(window.location.hash || '#home');
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  // Close menu on navigation
   const handleNavClick = (href: string) => {
     setActive(href);
     setMenuOpen(false);
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm border-b-2 border-accent/30">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <span className="text-2xl font-heading tracking-tight text-accent-dark">Leelamaya Shatapathy</span>
-        {/* Hamburger for mobile */}
+    <nav className="sticky top-0 z-50 border-b border-ink/10 bg-canvas/75 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
+        <a href="#home" className="font-heading text-2xl tracking-wide text-ink">
+          Leelamaya
+        </a>
+
         <button
-          className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-accent"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 bg-white/70 text-ink md:hidden"
           aria-label="Toggle navigation menu"
           onClick={() => setMenuOpen((open) => !open)}
         >
-          <svg className="w-7 h-7 text-accent-dark" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
             )}
           </svg>
         </button>
-        {/* Desktop nav */}
-        <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
-          {navLinks.map(link => (
+
+        <ul className="hidden items-center gap-2 rounded-full border border-ink/10 bg-white/65 p-1.5 text-sm md:flex">
+          {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`transition-colors duration-200 px-2 py-1 rounded font-heading ${
+                className={`rounded-full px-4 py-2 transition ${
                   active === link.href
-                    ? 'text-accent bg-accent/10 shadow-sm'
-                    : 'hover:text-accent-dark'
+                    ? 'bg-ink text-white shadow-[0_10px_25px_rgba(31,41,51,0.16)]'
+                    : 'text-muted hover:bg-ink/5 hover:text-ink'
                 }`}
               >
                 {link.label}
@@ -60,28 +62,30 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      {/* Mobile nav */}
+
       {menuOpen && (
-        <ul className="md:hidden flex flex-col space-y-2 px-6 pb-4 text-gray-700 font-medium bg-white border-b border-accent/20 shadow animate-fade-in-down">
-          {navLinks.map(link => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`block transition-colors duration-200 px-2 py-2 rounded font-heading text-lg ${
-                  active === link.href
-                    ? 'text-accent bg-accent/10 shadow-sm'
-                    : 'hover:text-accent-dark'
-                }`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="border-t border-ink/10 bg-panel/95 px-4 py-4 backdrop-blur md:hidden">
+          <ul className="space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`block rounded-2xl px-4 py-3 text-base transition ${
+                    active === link.href
+                      ? 'bg-ink text-white'
+                      : 'bg-white/70 text-muted hover:bg-white hover:text-ink'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;
